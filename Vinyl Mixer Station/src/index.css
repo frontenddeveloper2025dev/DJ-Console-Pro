@@ -1,0 +1,182 @@
+/**
+ * =====================================
+ *         DJ CONSOLE DESIGN SYSTEM
+ * =====================================
+ * 
+ * Project: Professional DJ Console
+ * Type: Music Mixing Application
+ * 
+ * DESIGN PHILOSOPHY
+ * -----------------
+ * Core Principle: Professional precision meets intuitive control
+ * Design Style: Dark Mode First with Neon Accents
+ * Emotion Goal: Creative empowerment and professional confidence
+ * 
+ * VISUAL LANGUAGE
+ * ----------------
+ * Primary Focus: Dual deck layout with central mixer
+ * Hierarchy: Controls grouped by function, visual weight by importance
+ * Whitespace: Minimal spacing for dense control layout
+ * 
+ * COLOR SYSTEM
+ * -------------
+ * Dark Base: Deep blacks and grays for professional feel
+ * Neon Accents: Electric blue and cyan for active states
+ * Status Colors: Red/green for recording/playing states
+ * Warning: Orange for cue points and alerts
+ * 
+ * TYPOGRAPHY
+ * ----------
+ * Display: Bold sans-serif for track titles
+ * Body: Clean monospace for BPM and time displays
+ * Scale: Compact hierarchy for dense information
+ * 
+ * INTERACTIONS
+ * ------------
+ * Feedback: Immediate visual and haptic-style responses
+ * Transitions: Quick 150ms for responsive feel
+ * States: Clear active/inactive distinction
+ * 
+ * ACCESSIBILITY
+ * -------------
+ * Contrast: High contrast for dark environments
+ * Focus: Bright focus rings for keyboard navigation
+ * Motion: Smooth but minimal animations
+ * ====================================
+ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* DJ Console Dark Theme - Professional Studio Look */
+    --background: 220 13% 9%;
+    --foreground: 0 0% 95%;
+    --card: 220 13% 12%;
+    --card-foreground: 0 0% 95%;
+    --popover: 220 13% 12%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 195 100% 50%;
+    --primary-foreground: 220 13% 9%;
+    --secondary: 220 13% 18%;
+    --secondary-foreground: 0 0% 95%;
+    --muted: 220 13% 15%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 290 100% 60%;
+    --accent-foreground: 0 0% 95%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 13% 20%;
+    --input: 220 13% 18%;
+    --ring: 195 100% 50%;
+    --radius: 0.375rem;
+    
+    /* DJ Specific Colors */
+    --dj-neon-blue: 195 100% 50%;
+    --dj-neon-cyan: 180 100% 50%;
+    --dj-neon-pink: 320 100% 60%;
+    --dj-success: 120 60% 50%;
+    --dj-warning: 30 100% 50%;
+    --dj-deck-a: 195 100% 50%;
+    --dj-deck-b: 30 100% 50%;
+    --dj-mixer: 220 13% 15%;
+    --dj-control: 220 13% 25%;
+    --dj-active: 195 100% 50%;
+  }
+  .dark {
+    /* Enhanced dark mode for DJ Console */
+    --background: 220 13% 6%;
+    --foreground: 0 0% 98%;
+    --card: 220 13% 9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 220 13% 9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 195 100% 55%;
+    --primary-foreground: 220 13% 6%;
+    --secondary: 220 13% 15%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 220 13% 12%;
+    --muted-foreground: 0 0% 70%;
+    --accent: 290 100% 65%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 84% 65%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 13% 18%;
+    --input: 220 13% 15%;
+    --ring: 195 100% 55%;
+  }
+}
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+}
+
+@layer components {
+  /* DJ Console Specific Components */
+  .deck-control {
+    @apply bg-card border border-border rounded-md p-3 transition-all duration-150;
+  }
+  
+  .deck-control:hover {
+    @apply border-primary/50;
+  }
+  
+  .knob {
+    @apply w-12 h-12 rounded-full border-2 border-border bg-muted relative cursor-pointer transition-all duration-150;
+  }
+  
+  .knob:hover {
+    @apply border-primary/50 shadow-lg shadow-primary/20;
+  }
+  
+  .knob.active {
+    @apply border-primary shadow-lg shadow-primary/30;
+  }
+  
+  .fader-track {
+    @apply bg-muted border border-border rounded-full relative;
+  }
+  
+  .fader-thumb {
+    @apply w-4 h-6 bg-primary rounded-sm border border-primary-foreground absolute top-1/2 transform -translate-y-1/2 cursor-pointer transition-all duration-150;
+  }
+  
+  .eq-band {
+    @apply flex flex-col items-center gap-2 p-2;
+  }
+  
+  .waveform-container {
+    @apply bg-muted/50 border border-border rounded-md p-2 h-20 relative overflow-hidden;
+  }
+  
+  .bpm-display {
+    @apply font-mono text-lg font-bold text-primary bg-card border border-border rounded px-3 py-2 text-center;
+  }
+  
+  .transport-button {
+    @apply w-12 h-12 rounded-full border-2 transition-all duration-150 flex items-center justify-center;
+  }
+  
+  .transport-button.play {
+    @apply border-green-500 text-green-500 hover:bg-green-500/10;
+  }
+  
+  .transport-button.play.active {
+    @apply bg-green-500 text-white;
+  }
+  
+  .transport-button.cue {
+    @apply border-orange-500 text-orange-500 hover:bg-orange-500/10;
+  }
+  
+  .transport-button.cue.active {
+    @apply bg-orange-500 text-white;
+  }
+}
